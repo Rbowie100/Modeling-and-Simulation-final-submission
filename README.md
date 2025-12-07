@@ -13,23 +13,41 @@ Usage guide:
 
 
 Parameter explanations:
+
 Historical customer: Holds the historical customer value entered by the user
+
 Dayend: A Boolean value to check to see if the day is over
+
 Left: Checks to see if everybody has left the store
+
 Wait: Holds the historical wait value at the checkout entered by the user
+
 Averagetime:Holds the historical average time spent shopping entered by the user
+
 Queueamount: Holds the amount of queues entered by the user
+
 Clock: Holds the time object
+
 distribution: accesses the algorithm class to give access to the e
+
 queuevalue: holds a string that holds the queue amount of the queue throughout the run time of the program 
-arrayplace:
-average:
+
+arrayplace:Holds the previous lenght of the array
+
+average: holds the average time spent for all customers in the store
+
 day: holds what number the current day is
+
 max: Holds the maximum value of minutes a customer spent in the store
+
 min: hold the minimum value of minutes a customer spent in the store
+
 dayamount: holds the amount of customers that entered the store that day
+
 standarddeviation: holds the standard deviation of the customers time spent in store
+
 Confidenceintervalplus: holds the upper value of confidence interval
+
 Confidenceintervalminus:Holds the lower value of the confidence interval
 
 Example Outputs:
