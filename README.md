@@ -1,19 +1,48 @@
-Project Status:
-What is implemented: The average is currently printed, and the time class is also fully implemented showing the time. The two main core algorithms Exponential distribution and Poisson Distribution have been implemented and are active in the program. Part of the Server class is working and is taking in a Queue of customers. The customers are counting their time and are leaving the store when they are done.
-What is still needed: The program will have to be adjusted a bit as the average is currently way too big. The program needs to simulate several days, not just one day and needs to increase the number of customers depending on the day. There needs to be multiple servers and customers need to go to a server depending on whether it will potentially be faster. It also needs to show how long they spend at checkout as well as how long they spend shopping.
-What has changed: Used an Arraylist to hold the customers, Bigdecimal to calculate the massive values and scanner to take in user input. Also, it is now taking in a historical wait, historical customer amount, and how long they normally spend at the store.
+Project description:
+This project takes in four values a customer amount, wait time amount, shopping time amount, and queue amount. These values are used to simulate a several days of a store using the exponential and Poisson distribution to help determine when customers enter and when customers go to checkout and then leave. After the program finishes running it creates three csv files that hold the average from all customers on that day, values for each customer, and the queue amounts and other information. For the customers individually it returns the time spent in store and when they entered and left. In the average file it gives the max, min, standard deviation, average, and confidence interval. In the queue file it tells the queue amounts at times during the programs runtime.
+
 Installation Instructions:
 1.	Download Java version 24 to your IDE of choice.
 2.	Download the files and place them in a folder so that IDE of choice can see and run it.
-Usage:
+Usage guide:
 1.	Open main and its files in an IDE of your choice.
 2.	Run the main file in the IDE
-3.	Enter the historical customer amount, Wait time, and time spent in store shopping.
+3.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue time.
 4.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
-Architecture Overview: The customer component deals with the customer and keeps track of the time the customer has spent in the store, when they arrived, when they left. The time component deals with the time in the store and keeps track of the hour, minute, and what day it is as well as how many customers may enter that day depending on what day it is. The server holds the customer at checkout and releases them when they finish checkout. The algorithm component holds both the exponential distribution and Poisson distribution algorithms.
-UML Design: It maps to the UML design by following a few of its methods, though quite a few have been removed, and it will be updated to reflect that.
-Changes: some of the changes were making algorithm handle all of the math with exponential and Poisson to keep it simple and focused on that task. It also has several Poisson methods to consider customers entering at different time intervals and most of the other methods that were on the UML diagram were removed or remade to better fit the multiple interval idea. Customers had a few values and methods added to better keep track of how long the customer was in the store and at checkout and to pass that value to the exponential distribution to calculate if they can leave or not. It also has had a few Boolean values added to determine where the customer currently is, like whether they are at checkout or not. The time has had a few methods and variables added to better calculate the time and for the time to be more accurate when printing it out. Server has remained the same other than having a value to return the top customer.
+
+
+Parameter explanations:
+Historical customer: Holds the historical customer value entered by the user
+Dayend: A Boolean value to check to see if the day is over
+Left: Checks to see if everybody has left the store
+Wait: Holds the historical wait value at the checkout entered by the user
+Averagetime:Holds the historical average time spent shopping entered by the user
+Queueamount: Holds the amount of queues entered by the user
+Clock: Holds the time object
+distribution: accesses the algorithm class to give access to the e
+queuevalue: holds a string that holds the queue amount of the queue throughout the run time of the program 
+arrayplace:
+average:
+day: holds what number the current day is
+max: Holds the maximum value of minutes a customer spent in the store
+min: hold the minimum value of minutes a customer spent in the store
+dayamount: holds the amount of customers that entered the store that day
+standarddeviation: holds the standard deviation of the customers time spent in store
+Confidenceintervalplus: holds the upper value of confidence interval
+Confidenceintervalminus:Holds the lower value of the confidence interval
+
+Example Outputs:
+Values used:
+Customer:45
+Wait:2
+Shopping time:45
+Queue amount:4
 
 
 
 
+<img width="736" height="299" alt="Picture1" src="https://github.com/user-attachments/assets/6c43dad1-bd96-469f-82a9-09164928d44a" />
+
+<img width="736" height="472" alt="Picture2" src="https://github.com/user-attachments/assets/daa4163e-1099-42c4-8b93-d2028d0b8cb3" />
+<img width="736" height="144" alt="Picture3" src="https://github.com/user-attachments/assets/9abad98e-6e23-46bc-be0c-db8968851841" />
+<img width="736" height="443" alt="Picture4" src="https://github.com/user-attachments/assets/16600b02-7c03-43d3-9445-15eb7941f452" />
