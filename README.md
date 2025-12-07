@@ -4,6 +4,7 @@ This project takes in four values a customer amount, wait time amount, shopping 
 Installation Instructions:
 1.	Download Java version 24 to your IDE of choice.
 2.	Download the files and place them in a folder so that IDE of choice can see and run it.
+
 Usage guide:
 1.	Open main and its files in an IDE of your choice.
 2.	Run the main file in the IDE
