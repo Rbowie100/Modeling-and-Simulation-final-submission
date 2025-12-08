@@ -6,10 +6,11 @@ Installation Instructions:
 2.	Download the files and place them in a folder so that IDE of choice can see and run it.
 
 Usage guide:
-1.	Open main and its files in an IDE of your choice.
-2.	Run the main file in the IDE
+1.	Open main and its files in IntelIJ of your choice.
+2.	Run the main file in the InteliJ
 3.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue amount.
 4.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
+5.	Files are created after the simulation ends.
 
 
 Parameter explanations:
