@@ -4,7 +4,7 @@ This project takes in four values a customer amount, wait time amount, shopping 
 Installation Instructions:
 1.	Download Java version 24 to Intelij.
 2.	Create a new project in Intelij and name it whatever you want
-3.	Download the files and place them in that project folder in the src in that folde.
+3.	Download the files and place them in that project folder in the src in that folder.
 
 Usage guide:
 1.	Open the project you created in intelij run it in IntelIJ.
