@@ -10,7 +10,8 @@ Usage guide:
 1.	Open the project you created in intelij run it in IntelIJ.
 2.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue amount.
 3.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
-4.	Files are created after the simulation ends.
+4.	Type any number you want to continue to another run in the simulation.
+5.	Files are created after the simulation ends.
 
 
 Parameter explanations:
