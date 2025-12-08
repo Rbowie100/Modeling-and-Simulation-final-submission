@@ -8,7 +8,7 @@ Installation Instructions:
 Usage guide:
 1.	Open main and its files in an IDE of your choice.
 2.	Run the main file in the IDE
-3.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue time.
+3.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue amount.
 4.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
 
 
