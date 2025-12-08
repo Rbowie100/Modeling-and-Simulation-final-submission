@@ -3,14 +3,14 @@ This project takes in four values a customer amount, wait time amount, shopping 
 
 Installation Instructions:
 1.	Download Java version 24 to Intelij.
-2.	Download the files and place them in a folder so that Intelij of choice can see it.
+2.	Create a new project in Intelij and name it whatever you want
+3.	Download the files and place them in that project folder in the src in that folde.
 
 Usage guide:
-1.	Open main and its files in IntelIJ of your choice.
-2.	Run the main file in the InteliJ
-3.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue amount.
-4.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
-5.	Files are created after the simulation ends.
+1.	Open the project you created in intelij run it in IntelIJ.
+2.	Enter the historical customer amount, Wait time, and time spent in store shopping as well as queue amount.
+3.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
+4.	Files are created after the simulation ends.
 
 
 Parameter explanations:
