@@ -5,6 +5,7 @@ Installation Instructions:
 1.	Download Java version 24 to Intelij.
 2.	Create a new project in Intelij and name it whatever you want
 3.	Download the files and place them in that project folder in the src in that folder.
+<img width="967" height="870" alt="CreateProject" src="https://github.com/user-attachments/assets/08a538ee-2347-497b-ba30-371d55ab34a1" />
 
 Usage guide:
 1.	Open the project you created in intelij run it in IntelIJ.
@@ -12,6 +13,7 @@ Usage guide:
 3.	The simulation should start running and display the time, how many customers are entering at times, and the average at the end.
 4.	Type any number you want to continue to another run in the simulation.
 5.	Files are created after the simulation ends.
+
 
 
 Parameter explanations:
