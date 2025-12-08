@@ -7,26 +7,7 @@ import java.io.File;
 
 public class Main {
 
-    public static void file(String filename, double[] array, int runnumber) {
-        try {
-            File myfile = new File(filename);
-
-            if (myfile.createNewFile()) {
-
-            }
-            String value = " ";
-
-            FileWriter write = new FileWriter(filename);
-            write.write("Averages" + value);
-            write.close();
-
-        } catch (Exception e) {
-
-            System.out.println(e);
-        }
-
-
-    }
+//Creates the csv files
     public static void file(String filename, String value, int runnumber,String parameters) {
         try {
             File myfile = new File(filename);
@@ -72,8 +53,11 @@ public class Main {
     public static void main(String[] args) {
         int runnumber = 1;
         Scanner scan = new Scanner(System.in);
+        //Holds the historical customer amount
         int historicalcustomer = 0;
+        //Holds historical wait
         double wait = 0;
+        //Hold historical time spent shopping
         double averagetime = 0;
         int run = 1;
 
@@ -82,6 +66,7 @@ public class Main {
 
 
             int queueamount = 0;
+            //continues running until all values aren't zero
             while (historicalcustomer <= 0 || wait <= 0 || averagetime <= 0 ||queueamount<=0) {
                 System.out.println("Enter historical customer");
                 historicalcustomer = scan.nextInt();
@@ -93,7 +78,7 @@ public class Main {
                 averagetime = scan.nextDouble();
                 scan.nextLine();
                 System.out.println("Enter amount of Queues");
-
+                //holds queue amount
                 queueamount = scan.nextInt();
                 scan.nextLine();
 
@@ -105,29 +90,37 @@ public class Main {
             }
                 long begin = System.nanoTime();
                 Random rand = new Random();
+                //creates server array based on queue amount
                 server[] queue = new server[queueamount];
                 for (int number = 0; number < queue.length; number++) {
                     queue[number] = new server();
                 }
                 algorithm distribution = new algorithm(historicalcustomer, wait, averagetime);
+                //creates time object
                 time clock = new time();
                 int day = 0;
                 String queuevalue = "";
                 ArrayList<customer> allcustomers = new ArrayList<customer>();
+                //Boolean value to check to see if all customers have left the store
                 boolean left = false;
+
                 for (int num = 0; num < historicalcustomer; num++) {
                     allcustomers.add(new customer(clock.Arrivaltimeminute(), clock.Arrivaltimehour(), clock));
                 }
                 int arrayplace = 0;
                 System.out.println(historicalcustomer + " have entered the store at " + clock.Arrivaltimehour() + ":0" + clock.Arrivaltimeminute() + clock.Arrival());
-
+                //runs for seven days
                 for (day = 0; day < 7; day++) {
                     boolean dayend=false;
+                    // doesn't end until all customers have left and the store closes
                     while (dayend==false|| left==false) {
                     if(clock.Arrivaltimehour() ==10 &&  clock.Arrival().equals("P.M") ) {
                         dayend=true;
                     }
                     if(dayend==false){
+
+                        //checks to see if it is on a value that is an increment of five and then checks to see if a customer can be added based on probability the others are the same except for different times
+                        //customers are divided by the amount the number can go into a hour so 60/5 =12 which leads to the value below
                         if (clock.Arrivaltimeminute() % 5 == 0) {
                             double random = rand.nextDouble();
                             if (distribution.Poissond5mins() >= random) {
@@ -203,7 +196,7 @@ public class Main {
 
                             }
                         }
-                    }
+                    }   //increase time for the clock
                         clock.increasetime();
                         if (clock.Arrivaltimeminute() < 10) {
                             System.out.println("Current time:" + clock.Arrivaltimehour() + ":" + "0" + clock.Arrivaltimeminute() + clock.Arrival());
@@ -214,7 +207,7 @@ public class Main {
                             System.out.println("Current time:" + clock.Arrivaltimehour() + ":" + clock.Arrivaltimeminute() + clock.Arrival());
                         }
 
-
+// checks to see if a customer is shopping, whether they are going to checkout, and increases the time of a shopper
                             double value = rand.nextFloat();
                             for (int num = arrayplace; num < allcustomers.size(); num++) {
                                 if (allcustomers.get(num).Shopping) {
@@ -225,7 +218,7 @@ public class Main {
                                 if (clock.Arrivaltimeminute() % 5== 0) {
 
                                     value = rand.nextFloat();
-
+                                    //adds customer to queue if they go to checkout
                                     if (allcustomers.get(num).Shopping) {
                                         if (distribution.ExponenetialdistributionShop(allcustomers.get(num).currenttimeinstore) >= value) {
                                             int go = queue[0].number;
@@ -247,7 +240,7 @@ public class Main {
 
 
                         }
-
+    //checks to see if a person is in checkout, whether they have left, and increases time of a person in checkout
 
 
                         for (int num = arrayplace; num < allcustomers.size(); num++) {
@@ -294,6 +287,7 @@ public class Main {
                         }
                         left=true;
 
+
                         for (int num = arrayplace; num < allcustomers.size(); num++) {
 
                             if (allcustomers.get(num).left == false) {
@@ -309,9 +303,12 @@ public class Main {
 
 
                     double average = 0;
+                    //calcualtes the average for a day
                     int dayamount= allcustomers.size()-arrayplace;
-                    int max=allcustomers.get(arrayplace).getMinute();;
-                    int min=allcustomers.get(arrayplace).getMinute();;
+
+                    int max=allcustomers.get(arrayplace).getMinute();
+                    int min=allcustomers.get(arrayplace).getMinute();
+                    //calculates the max and min
                     for (int num = arrayplace; num < allcustomers.size(); num++) {
                         average += allcustomers.get(num).getMinute();
                         if(max<allcustomers.get(num).getMinute()){
@@ -328,12 +325,15 @@ public class Main {
 
                     average = (average / dayamount);
                     double standarddeviation=0;
+                    //calculates the standard deviation
                     for (int num = arrayplace; num < allcustomers.size(); num++) {
                         standarddeviation+=(Math.pow(allcustomers.get(num).getMinute()-average,2));
 
 
                     }
+
                     standarddeviation=Math.sqrt(standarddeviation/dayamount);
+                    //calcualtes the confidence interval
                     double confidenceintervalplus=average+1.96*(standarddeviation/Math.sqrt(dayamount));
                     double confidenceintervalminus=average-1.96*(standarddeviation/Math.sqrt(dayamount));
                     clock.confidenceintervalplus[day]=confidenceintervalplus;
@@ -344,6 +344,7 @@ public class Main {
                     clock.max[day]=max;
                     clock.min[day]=min;
                     System.out.println("The average time spent in store is " + average);
+                    //resets the time to begin a new day
                     clock.resettime();
                     if (day < 6) {
                         System.out.println("The date is " + clock.Days[day + 1]);
@@ -357,12 +358,13 @@ public class Main {
 
                 }
                 String ArrivalLeave = "";
-
+                    // creates a long string to for the file method to use to create a file from it
                 for (int num = 0; num < allcustomers.size(); num++) {
                     ArrivalLeave += "Customer," + (num + 1) + ", Arrival time," + allcustomers.get(num).Arrivaltimehour + ",:" + allcustomers.get(num).Arrivaltimeminute + ",Exit time:," + allcustomers.get(num).leavecheckouthour + ": "+allcustomers.get(num).leavecheckout+", Time spent:"+allcustomers.get(num).getMinute()+"\n";
                 }
                 double average=0;
                 int max=0;
+                //calculates final average, max, min
             int min=allcustomers.get(arrayplace).getMinute();;
             for (int num = 0; num < allcustomers.size(); num++) {
                 average += allcustomers.get(num).getMinute();
@@ -377,6 +379,7 @@ public class Main {
             }
             average = (average / allcustomers.size());
             double standarddeviation=0;
+            //calculates final standard deviation
             for (int num = 0; num < allcustomers.size(); num++) {
                 standarddeviation+=(Math.pow(allcustomers.get(num).getMinute()-average,2));
 
@@ -384,6 +387,7 @@ public class Main {
             }
             standarddeviation=Math.sqrt(standarddeviation/allcustomers.size());
                 String value="";
+                //creates massive string that holds all the data and is sent over to the file creator to create a file using it
             for (int num = 0; num < clock.dayvalues.length; num++) {
                 value += clock.Days[num]+","+clock.dayvalues[num]+",max:,"+ clock.max[num]+",min:,"+clock.min[num]+",Standard deviation:,"+clock.standarddeviation[num]+",Confidence interval:,"+ clock.confidenceintervalplus[num]+","+clock.confidenceintervalminus[num]+",\n";
             }
@@ -391,12 +395,12 @@ public class Main {
             double confidenceintervalminus=average-1.96*(standarddeviation/Math.sqrt(allcustomers.size()));
             value+="Average,"+average+",max:,"+ max+",min:,"+min+",Standard deviation:,"+standarddeviation+",Confidence interval:,"+confidenceintervalplus+","+confidenceintervalminus+",\n";
 
-
+                //creates a file based on the current run number
             file(("CustomerAverage"+runnumber+".csv"), value, runnumber,parameters);
             file(("Customer times"+runnumber+".csv"), ArrivalLeave, runnumber,parameters);
             file(("QueueValues"+runnumber+".csv"), queuevalue, runnumber,parameters);
                 long endvalue = System.nanoTime();
-
+            //calculates the time the computer took to run the program
                 long timespent = (endvalue - begin) / 1000000;
                 System.out.println("Time spent running in miliseconds:" + timespent);
                 System.out.println("Do you want to end simulation type zero to do so");
@@ -411,6 +415,8 @@ public class Main {
         }
 
     }
+
+
 
 
 
