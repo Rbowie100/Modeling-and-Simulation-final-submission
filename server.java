@@ -1,7 +1,7 @@
 
 
 public class server {
-    int number=0;
+    public int number=0;
 
     public class Node {
         public Node next;
@@ -15,7 +15,7 @@ public class server {
 
    public Node head;
    public Node tail;
-
+//Adds a customer to the linked list and changes the boolean values of the customer for shopping and checkout
     public void QueueAdd(customer value) {
         number++;
         if (head == null) {
@@ -35,7 +35,7 @@ public class server {
 
         }
     }
-
+//removes customer from queue and changes the boolean values of checkout and whether they have left
     public void Queueremove() {
         number--;
         this.head.customerhold.setLeft(true);
@@ -60,16 +60,17 @@ public class server {
                 Node run = head;
                 if (run.next != null) {
                     run = run.next;
-                    value += 1;
+                    value ++;
                 }
                 return value;
 
             }
         }
-
-        public customer top () {
+//returns top of queue
+        public customer top(){
             return head.customerhold;
         }
+        //checks whether the queue is empty
         public boolean isempty () {
             if (head == null) {
                 return true;
